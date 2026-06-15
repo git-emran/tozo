@@ -1,6 +1,10 @@
 [tool.black]
 target-version = ["py310"]
 
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+pythonpath = ["."]
+
 
 [tool.isort]
 profile = "black"
