@@ -50,6 +50,12 @@ terraform.tfvars
 .coverage
 htmlcov/
 
+# PDM
+.pdm.toml
+.pdm-python
+__pypackages__/
+pdm.lock
+
 # Type checking / linting
 .mypy_cache/
 .ruff_cache/
@@ -59,16 +65,10 @@ build/
 dist/
 *.egg-info/
 
-# IDEs
-.vscode/
-.idea/
 
 # OS files
-.DS_Store
 Thumbs.db
 
-# Logs
-*.log
 
 # Databases
 *.sqlite3

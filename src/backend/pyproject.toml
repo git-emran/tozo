@@ -3,11 +3,19 @@ target-version = ["py310"]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
-pythonpath = ["."]
+pythonpath = ["src"]
 
+[tool.pdm.scripts]
+start = {cmd = "quart --app src/backend/run.py run --port 5050", env_file = "development.env"}
+test = {cmd = "pytest tests/", env_file = "testing.env"}
 
 [tool.isort]
 profile = "black"
 
 [tool.vulture]
 min_confidence = 100
+
+[project]
+# PEP 621 project metadata
+# See https://www.python.org/dev/peps/pep-0621/
+requires-python = ">=3.14"

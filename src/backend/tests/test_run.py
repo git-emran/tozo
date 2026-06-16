@@ -1,5 +1,5 @@
 import pytest
-from run import app
+from backend.run import app
 
 
 @pytest.mark.asyncio
