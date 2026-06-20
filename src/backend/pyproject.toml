@@ -3,11 +3,16 @@ target-version = ["py310"]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
-pythonpath = ["src"]
+pythonpath = ["src", "src/backend"]
 
 [tool.pdm.scripts]
-start = {cmd = "quart --app src/backend/run.py run --port 5050", env_file = "development.env"}
+start = {cmd = "quart --app src/backend/run.py run --reload --port 5050", env_file = "development.env"}
 test = {cmd = "pytest tests/", env_file = "testing.env"}
+
+[tool.pyright]
+include = ["src"]
+venvPath = "."
+venv = ".venv"
 
 [tool.isort]
 profile = "black"
@@ -19,3 +24,9 @@ min_confidence = 100
 # PEP 621 project metadata
 # See https://www.python.org/dev/peps/pep-0621/
 requires-python = ">=3.14"
+dependencies = ["bcrypt>=5.0.0", "zxcvbn>=4.5.0", "itsdangerous>=2.2.0", "quart-rate-limiter>=0.12.1", "quart-auth>=0.11.0", "quart>=0.20.0", "pydantic[email]>=2.13.4", "quart-schema>=0.23.0"]
+
+[dependency-groups]
+dev = [
+    "freezegun>=1.5.5",
+]
