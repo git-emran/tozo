@@ -60,20 +60,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Python dependencies
+      - name: Install PDM
         run: |
-          pip install --upgrade pip
-          pip install -r requirements.txt
+          python -m pip install --upgrade pip
+          pip install pdm
+
+      - name: Install dependencies
+        run: pdm install --dev
 
       - name: Run lint
-        run: |
-          pip install flake8
-          flake8 .
+        run: pdm run lint
 
       - name: Run tests
-        run: |
-          pip install pytest
-          pytest
+        run: pdm run test
   frontend:
     runs-on: ubuntu-latest
 

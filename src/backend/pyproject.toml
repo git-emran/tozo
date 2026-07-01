@@ -10,6 +10,8 @@ start = {cmd = "quart --app src/backend/run.py run --reload --port 5050", env_fi
 recreate-db-base = "quart --app src/backend/run.py recreate_db"
 recreate-db = {composite = ["recreate-db-base"], env_file = "development.env"}
 test = {composite = ["recreate-db-base", "pytest tests/"], env_file = "testing.env"}
+lint = "flake8 ."
+
 
 [tool.pyright]
 include = ["src"]
