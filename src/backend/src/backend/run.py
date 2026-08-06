@@ -82,12 +82,12 @@ async def handle_request_validation_error(
         return {"errors": str(error.validation_error)}, 400
 
 
-@app.errorhandler(APIError)  # type: ignore
+@app.errorhandler(APIError) 
 async def handle_api_error(error: APIError) -> ResponseReturnValue:
     return {"code": error.code}, error.status_code
 
 
-@app.errorhandler(RateLimitExceeded)  # type: ignore
+@app.errorhandler(RateLimitExceeded)
 async def handle_rate_limit_exceeded_error(
     error: RateLimitExceeded,
 ) -> ResponseReturnValue:
